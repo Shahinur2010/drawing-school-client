@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/Authprovider';
 
 const SocialLogin = () => {
-    const { googleSignIn } = useContext(AuthContext);
+    const { signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -12,12 +12,12 @@ const SocialLogin = () => {
 
 
     const handleGoogleLogin = () => {
-        googleSignIn()
+        signInWithGoogle()
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                const saveUser = { name: user.displayName, email: user.email }
-                fetch('https://bistro-boss-server-beryl.vercel.app/users', {
+                const saveUser = { name: user?.displayName, email: user?.email }
+                fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"

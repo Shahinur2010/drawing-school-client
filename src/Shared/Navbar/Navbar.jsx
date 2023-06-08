@@ -16,8 +16,9 @@ const Navbar = () => {
 
     const navOptions = <>
         <li><ActiveLink to='/'>Home</ActiveLink></li>
-        <li><ActiveLink to='/menu'>Our Menu</ActiveLink></li>
-        <li><ActiveLink to='/order/salad'>Order Food</ActiveLink></li>
+        <li><ActiveLink to='/menu'>Instructors</ActiveLink></li>
+        <li><ActiveLink to='/order/salad'>Classes</ActiveLink></li>
+        <li><ActiveLink to='/order/salad'>Dashboard</ActiveLink></li>
         {/* <li><ActiveLink to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</ActiveLink></li>
         <li><ActiveLink to='/dashboard/mycart'><button className="btn gap-2">
             <div className="badge badge-secondary">+{cart?. length || 0}</div>

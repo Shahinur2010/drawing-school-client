@@ -7,60 +7,60 @@ import SocialLogin from "../../SocialLogin/SocialLogin";
 
 const Register = () => {
 
-    const {createUser, updateUserProfile} = useContext(AuthContext);
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createUser, updateUser } = useContext(AuthContext);
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const navigate = useNavigate();
-    
+
     const onSubmit = data => {
-        createUser(data.email, data.password)
-        .then(result => {
-            const loggedUser = result.user;
-            console.log(loggedUser);
-            updateUserProfile(data.name, data.photoURL)
-            .then(()=>{
-                const saveUser = {name: data.name, email: data.email}
-               fetch('https://bistro-boss-server-beryl.vercel.app/users',{
-                method: 'POST',
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify(saveUser)
-               })
-               .then(res=> res.json())
-               .then(data=>{
-                if(data.insertedId > 0){
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'User created successfully',
-                        showConfirmButton: false,
-                        timer: 1500
-                      })
-                      navigate('/') 
-                }
-               })
-               
-                reset();
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'User created successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-                  navigate('/')
+        createUser(data?.email, data?.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUser(data?.name, data?.photoURL)
+                    .then(() => {
+                        const saveUser = { name: data?.name, email: data?.email }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                "content-type": "application/json"
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId > 0) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    navigate('/')
+                                }
+                            })
+
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User created successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate('/')
+                    })
+                    .catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
-        })
     };
 
     return (
         <>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex flex-col">
-                        <div>
+                    <div>
                         <h1 className="text-3xl font-bold text-center">Register now!</h1>
-                        </div>
+                    </div>
                     <div className="card max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
@@ -97,18 +97,33 @@ const Register = () => {
                                 {errors.password?.type === 'maxLength' && <p className="text-red-400">Password must be at less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-400">Password must one uppercase, one lowercase, one number and a special characters</p>}
                             </div>
-                            <div className="form-control">
+                            {/* <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
                                 <input type="password" {...register("confirm-password", {
-                                    required: true, minLength: 6, maxLength: 20,
-                                    pattern: /(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])/
-                                })} name="confirm-password" placeholder="confirm-password" className="input input-bordered" />
-                                {errors.password?.type === 'required' && <p className="text-red-400">Password is required</p>}
-                                {errors.password?.type === 'minLength' && <p className="text-red-400">Password must be at least 6 characters</p>}
-                                {errors.password?.type === 'maxLength' && <p className="text-red-400">Password must be at less than 20 characters</p>}
-                                {errors.password?.type === 'pattern' && <p className="text-red-400">Password must one uppercase, one lowercase, one number and a special characters</p>}
+                                    required: true,
+                                })} name="confirm-password" placeholder="confirm-password" className="input input-bordered" required/>
+                            </div> */}
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Confirm Password</span>
+                                </label>
+                                <input
+                                    type="password"
+                                    {...register("confirm-password", {
+                                        required: true,
+                                    })}
+                                    name="confirm-password"
+                                    placeholder="confirm-password"
+                                    className="input input-bordered"
+                                />
+                                {errors['confirm-password'] && (
+                                    <p className="text-red-400">Confirm Password is required</p>
+                                )}
+                                {watch('password') !== watch('confirm-password') && (
+                                    <p className="text-red-400">Password does not match</p>
+                                )}
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary btn-block" type="submit" value="Register" />
