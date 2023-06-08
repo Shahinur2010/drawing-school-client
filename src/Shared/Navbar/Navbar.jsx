@@ -1,12 +1,6 @@
-
-
-
-import { NavLink } from "react-router-dom";
-// import { FaShoppingCart } from "react-icons/fa";
-// import uesCart from "../../../hooks/useCart";
-// import useAdmin from "../../../hooks/useAdmin";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/Authprovider";
+import ActiveLink from "../ActiveLink/ActiveLink";
 
 const Navbar = () => {
 
@@ -21,25 +15,24 @@ const Navbar = () => {
     }
 
     const navOptions = <>
-        <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/menu'>Our Menu</NavLink></li>
-        <li><NavLink to='/order/salad'>Order Food</NavLink></li>
-        {/* <li><NavLink to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</NavLink></li>
-        <li><NavLink to='/dashboard/mycart'><button className="btn gap-2">
+        <li><ActiveLink to='/'>Home</ActiveLink></li>
+        <li><ActiveLink to='/menu'>Our Menu</ActiveLink></li>
+        <li><ActiveLink to='/order/salad'>Order Food</ActiveLink></li>
+        {/* <li><ActiveLink to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</ActiveLink></li>
+        <li><ActiveLink to='/dashboard/mycart'><button className="btn gap-2">
             <div className="badge badge-secondary">+{cart?. length || 0}</div>
-        </button></NavLink></li> */}
+        </button></ActiveLink></li> */}
 
         {
             user ? <>
-                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button></> : <><li><NavLink to='/login'>Login</NavLink></li></>
+                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button></> : <><li><ActiveLink to='/login'>Login</ActiveLink></li></>
         }
     </>
 
     return (
-        <>
-            <div className="navbar fixed z-10 bg-opacity-30 bg-green-400 text-black max-w-screen-xl">
+            <div className="navbar bg-green-200 text-black">
                 <div className="navbar-start">
-                    <div className="dropdown text-black">
+                    <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
@@ -58,7 +51,6 @@ const Navbar = () => {
                     <a className="btn">Get started</a>
                 </div>
             </div>
-        </>
     );
 };
 
