@@ -1,24 +1,33 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/Authprovider";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 
 const Register = () => {
-
     const { createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
 
     const onSubmit = data => {
+        if (watch('password') !== watch('confirm-password')) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Passwords do not match',
+            });
+            return;
+        }
+
         createUser(data?.email, data?.password)
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 updateUser(data?.name, data?.photoURL)
                     .then(() => {
-                        const saveUser = { name: data?.name, email: data?.email }
+                        const saveUser = { name: data?.name, email: data?.email };
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
@@ -35,10 +44,11 @@ const Register = () => {
                                         title: 'User created successfully',
                                         showConfirmButton: false,
                                         timer: 1500
-                                    })
-                                    navigate('/')
+                                    });
+                                    navigate('/');
                                 }
                             })
+                            .catch(err => console.log(err));
 
                         reset();
                         Swal.fire({
@@ -47,11 +57,15 @@ const Register = () => {
                             title: 'User created successfully',
                             showConfirmButton: false,
                             timer: 1500
-                        })
-                        navigate('/')
+                        });
+                        navigate('/');
                     })
-                    .catch(err => console.log(err))
-            })
+                    .catch(err => console.log(err));
+            });
+    };
+
+    const handleConfirmPasswordBlur = () => {
+        setConfirmPasswordTouched(true);
     };
 
     return (
@@ -63,6 +77,7 @@ const Register = () => {
                     </div>
                     <div className="card max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+                            {/* Rest of the form controls */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -97,14 +112,6 @@ const Register = () => {
                                 {errors.password?.type === 'maxLength' && <p className="text-red-400">Password must be at less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-400">Password must one uppercase, one lowercase, one number and a special characters</p>}
                             </div>
-                            {/* <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Confirm Password</span>
-                                </label>
-                                <input type="password" {...register("confirm-password", {
-                                    required: true,
-                                })} name="confirm-password" placeholder="confirm-password" className="input input-bordered" required/>
-                            </div> */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
@@ -117,18 +124,21 @@ const Register = () => {
                                     name="confirm-password"
                                     placeholder="confirm-password"
                                     className="input input-bordered"
+                                    onBlur={handleConfirmPasswordBlur}
                                 />
                                 {errors['confirm-password'] && (
                                     <p className="text-red-400">Confirm Password is required</p>
                                 )}
-                                {watch('password') !== watch('confirm-password') && (
+                                {confirmPasswordTouched && watch('password') !== watch('confirm-password') && (
                                     <p className="text-red-400">Password does not match</p>
                                 )}
                             </div>
+                            {/* Rest of the form controls */}
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary btn-block" type="submit" value="Register" />
                             </div>
                         </form>
+                        {/* Rest of the JSX code */}
                         <p className="mx-auto mb-4"><small>Already have an account? <Link className="text-blue-300" to="/login">Login Here</Link></small></p>
                         <SocialLogin></SocialLogin>
                     </div>
@@ -139,4 +149,5 @@ const Register = () => {
 };
 
 export default Register;
+
 
