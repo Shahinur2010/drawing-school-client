@@ -15,19 +15,25 @@ const Navbar = () => {
     }
 
     const navOptions = <>
-        <li><ActiveLink to='/'>Home</ActiveLink></li>
-        <li><ActiveLink to='/menu'>Instructors</ActiveLink></li>
-        <li><ActiveLink to='/order/salad'>Classes</ActiveLink></li>
-        <li><ActiveLink to='/order/salad'>Dashboard</ActiveLink></li>
+        <li className="text-lg font-semibold"><ActiveLink to='/'>Home</ActiveLink></li>
+        <li className="text-lg font-semibold"><ActiveLink to='/menu'>Instructors</ActiveLink></li>
+        <li className="text-lg font-semibold"><ActiveLink to='/order/salad'>Classes</ActiveLink></li>
+        {user && <li className="text-lg font-semibold"><ActiveLink to='/order/salad'>Dashboard</ActiveLink></li>}
+       
         {/* <li><ActiveLink to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</ActiveLink></li>
         <li><ActiveLink to='/dashboard/mycart'><button className="btn gap-2">
             <div className="badge badge-secondary">+{cart?. length || 0}</div>
         </button></ActiveLink></li> */}
+ <div className="mt-5">
+                    <div className="tooltip flex flex-col lg:flex-row gap-2 me-4" data-tip={user?.displayName}>
+                        <button className="btn btn-info"><img className="w-10 rounded-full" src={user?.photoURL} /></button>
 
-        {
-            user ? <>
-                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button></> : <><li><ActiveLink to='/login'>Login</ActiveLink></li></>
-        }
+                        {user ? <>
+                            <button onClick={handleLogOut} className="btn btn-info">LogOut</button></> : <ActiveLink to='/login' className="font-semibold">Login</ActiveLink>
+                        }
+                    </div>
+                </div>
+
     </>
 
     return (
@@ -41,16 +47,14 @@ const Navbar = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Drawing School</a>
+                    <a className="btn btn-ghost normal-case text-3xl font-extrabold">Drawing School</a>
                 </div>
-                <div className="navbar-center hidden lg:flex">
+                <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {navOptions}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Get started</a>
-                </div>
+               
             </div>
     );
 };

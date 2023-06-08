@@ -135,7 +135,7 @@ const Register = () => {
                             </div>
                             {/* Rest of the form controls */}
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary btn-block" type="submit" value="Register" />
+                                <input className="btn btn-info btn-block" type="submit" value="Register" />
                             </div>
                         </form>
                         {/* Rest of the JSX code */}

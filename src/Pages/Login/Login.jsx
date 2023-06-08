@@ -90,7 +90,7 @@ const Login = () => {
                             })} name="password" placeholder="password" className="input input-bordered" required />
                         </div> 
                         <div className="form-control mt-6">
-                            <input className="btn btn-primary btn-block" type="submit" value="Login" />
+                            <input className="btn btn-info btn-block" type="submit" value="Login" />
                         </div>
                     </form>
                     <p className="mx-auto mb-4"><small>New to Drawing School? <Link className="text-blue-300" to="/register">Please Register!</Link></small></p>
