@@ -5,6 +5,7 @@ import '../Home/Home.css';
 import { useContext, useEffect } from "react";
 import useTitle from "../../../Hooks/useTitle";
 import { ThemeContext } from '../../../Providers/ThemeProvider/ThemeProvider';
+import TopSliders from '../TopSliders/TopSliders';
 
 
 const Home = () => {
@@ -17,7 +18,7 @@ const Home = () => {
     return (
 
 <div className={`home ${theme}`}>
-      <button onClick={toggleTheme}>
+      <button className='btn btn-outline' onClick={toggleTheme}>
         {theme === 'light' ? 'Switch to Dark Theme' : 'Switch to Light Theme'}
       </button>
       {/* Rest of your home page content */}
@@ -27,6 +28,7 @@ const Home = () => {
             </div>
             <div data-aos="zoom-in" data-aos-delay="400">
                 {/* Your content */}
+                <TopSliders></TopSliders>
             </div>
     </div>
     );

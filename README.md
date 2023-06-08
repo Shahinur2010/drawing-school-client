@@ -7,6 +7,7 @@
 - Instructor Dashboard
 - Users Dashboard
 - JWT
+- Image hosting
 - Payment gateway
 - CRUD operations
 - Private route used for ensuring loggedIn user
