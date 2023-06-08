@@ -15,4 +15,17 @@
       padding: 5px;
     }
   }
+
+  
+
+.home {
+  /* Styles for the light theme */
+  background-color: palevioletred;
+}
+
+.home.dark {
+  /* Styles for the dark theme */
+  background-color: peru;
+}
+
   
