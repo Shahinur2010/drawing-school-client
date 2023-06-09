@@ -1,4 +1,4 @@
- ## Website name: [Drawing School]
+ ## Website name: [Drawing School](https://i.ibb.co/rxZrxSK/school.jpg)
  
  ## Live Site Link [Assignment-12](https://toys-hub-c3fe5.web.app/). ,
 
@@ -7,7 +7,6 @@
 - Instructor Dashboard
 - Users Dashboard
 - JWT
-- Image hosting
 - Payment gateway
 - CRUD operations
 - Private route used for ensuring loggedIn user

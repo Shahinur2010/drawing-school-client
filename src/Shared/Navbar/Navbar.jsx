@@ -47,7 +47,17 @@ const Navbar = () => {
                             {navOptions}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-3xl font-extrabold">Drawing School</a>
+
+                    <div className="navbar p-4 flex flex-col lg:flex-row text-black">
+            <div>
+                <img className="rounded-full w-16 h-16" src="https://i.ibb.co/rxZrxSK/school.jpg" alt="" />
+            </div>
+            <div className="flex-1">
+                <a className="btn btn-ghost normal-case text-3xl font-bold">Drawing School</a>
+            </div>
+</div>
+
+                    {/* <a className="btn btn-ghost normal-case text-3xl font-extrabold"></a> */}
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
