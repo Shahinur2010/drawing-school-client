@@ -1,7 +1,7 @@
-import img1 from '../../../assets/images/scene.webp'
-import img2 from '../../../assets/images/colored.jpg'
-import img3 from '../../../assets/images/village.jpg'
-import img4 from '../../../assets/images/river.jpg'
+import img1 from '../../../../assets/images/scene.webp'
+import img2 from '../../../../assets/images/colored.jpg'
+import img3 from '../../../../assets/images/village.jpg'
+import img4 from '../../../../assets/images/strom.jpg'
 const TopSliders = () => {
     return (
         <div className="">

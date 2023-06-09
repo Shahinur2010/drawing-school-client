@@ -5,7 +5,10 @@ import '../Home/Home.css';
 import { useContext, useEffect } from "react";
 import useTitle from "../../../Hooks/useTitle";
 import { ThemeContext } from '../../../Providers/ThemeProvider/ThemeProvider';
-import TopSliders from '../TopSliders/TopSliders';
+import TopSliders from './TopSliders/TopSliders';
+import Sliders from './Sliders/Sliders'
+import PopularClasses from './PopularClasses/PopularClasses';
+import PopularInstructors from './PopularInstructors/PopularInstructors';
 
 
 const Home = () => {
@@ -29,6 +32,9 @@ const Home = () => {
             <div data-aos="zoom-in" data-aos-delay="400">
                 {/* Your content */}
                 <TopSliders></TopSliders>
+                <Sliders></Sliders>
+                <PopularClasses></PopularClasses>
+                <PopularInstructors></PopularInstructors>
             </div>
     </div>
     );

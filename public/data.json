@@ -1,0 +1,122 @@
+[
+    {
+      "classImg": "class1.jpg",
+      "numberOfStudents": 15,
+      "instructorName": "John Smith",
+      "instructorImg": "instructor1.jpg",
+      "className": "Introduction to Sketching",
+      "availableSeats": 5,
+      "price": 50,
+      "instructorEmail": "johnsmith@example.com",
+      "status": "pending",
+      "role": "student"
+    },
+    {
+      "classImg": "class2.jpg",
+      "numberOfStudents": 12,
+      "instructorName": "Sarah Johnson",
+      "instructorImg": "instructor2.jpg",
+      "className": "Watercolor Techniques",
+      "availableSeats": 8,
+      "price": 75,
+      "instructorEmail": "sarahjohnson@example.com",
+      "status": "pending",
+      "role": "student"
+    },
+    {
+      "classImg": "class3.jpg",
+      "numberOfStudents": 20,
+      "instructorName": "David Lee",
+      "instructorImg": "instructor3.jpg",
+      "className": "Portrait Drawing",
+      "availableSeats": 0,
+      "price": 100,
+      "instructorEmail": "davidlee@example.com",
+      "status": "Closed"
+    },
+    {
+      "classImg": "class4.jpg",
+      "numberOfStudents": 8,
+      "instructorName": "Emily Adams",
+      "instructorImg": "instructor4.jpg",
+      "className": "Still Life Painting",
+      "availableSeats": 2,
+      "price": 90,
+      "instructorEmail": "emilyadams@example.com",
+      "status": "pending",
+      "role": "student"
+    },
+    {
+      "classImg": "class5.jpg",
+      "numberOfStudents": 18,
+      "instructorName": "Michael Thompson",
+      "instructorImg": "instructor5.jpg",
+      "className": "Charcoal Sketching",
+      "availableSeats": 3,
+      "price": 60,
+      "instructorEmail": "michaelthompson@example.com",
+      "status": "pending",
+      "role": "student"
+    },
+    {
+      "classImg": "class6.jpg",
+      "numberOfStudents": 10,
+      "instructorName": "Jennifer Davis",
+      "instructorImg": "instructor6.jpg",
+      "className": "Landscape Painting",
+      "availableSeats": 5,
+      "price": 80,
+      "instructorEmail": "jenniferdavis@example.com",
+      "status": "pending",
+      "role": "student"
+    },
+    {
+      "classImg": "class7.jpg",
+      "numberOfStudents": 16,
+      "instructorName": "Christopher Clark",
+      "instructorImg": "instructor7.jpg",
+      "className": "Pen and Ink Drawing",
+      "availableSeats": 4,
+      "price": 70,
+      "instructorEmail": "christopherclark@example.com",
+      "status": "pending",
+      "role": "student"
+    },
+    {
+      "classImg": "class8.jpg",
+      "numberOfStudents": 14,
+      "instructorName": "Jessica Wilson",
+      "instructorImg": "instructor8.jpg",
+      "className": "Figure Drawing",
+      "availableSeats": 6,
+      "price": 95,
+      "instructorEmail": "jessicawilson@example.com",
+      "status": "pending",
+      "role": "student"
+    },
+    {
+      "classImg": "class9.jpg",
+      "numberOfStudents": 22,
+      "instructorName": "Robert Baker",
+      "instructorImg": "instructor9.jpg",
+      "className": "Oil Painting Basics",
+      "availableSeats": 1,
+      "price": 110,
+      "instructorEmail": "robertbaker@example.com",
+      "status": "pending",
+      "role": "student"
+    },
+    {
+      "classImg": "class10.jpg",
+      "numberOfStudents": 13,
+      "instructorName": "Amanda Turner",
+      "instructorImg": "instructor10.jpg",
+      "className": "Color Theory",
+      "availableSeats": 7,
+      "price": 55,
+      "instructorEmail": "amandaturner@example.com",
+      "status": "pending",
+      "role": "student"
+    }
+  ]
+  
