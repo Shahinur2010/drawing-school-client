@@ -20,12 +20,12 @@
 
 .home {
   /* Styles for the light theme */
-  background-color: plum;
+  background-color:lightgoldenrodyellow;
 }
 
 .home.dark {
   /* Styles for the dark theme */
-  background-color: peru;
+  background-color:darkslategrey;
 }
 
   

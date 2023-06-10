@@ -1,9 +1,9 @@
 [
     {
-      "classImg": "class1.jpg",
+      "classImg": "https://i.ibb.co/sQpMKdb/sketch.jpg",
       "numberOfStudents": 15,
       "instructorName": "John Smith",
-      "instructorImg": "instructor1.jpg",
+      "instructorImg": "https://i.ibb.co/khHny3h/teacher3.jpg",
       "className": "Introduction to Sketching",
       "availableSeats": 5,
       "price": 500,
@@ -12,10 +12,10 @@
       "role": "student"
     },
     {
-      "classImg": "class2.jpg",
+      "classImg": "https://i.ibb.co/XYXLs4k/watercolor.jpg",
       "numberOfStudents": 12,
       "instructorName": "Sarah Johnson",
-      "instructorImg": "instructor2.jpg",
+      "instructorImg": "https://i.ibb.co/GMCJqym/teacher2.jpg",
       "className": "Watercolor Techniques",
       "availableSeats": 8,
       "price": 750,
@@ -24,10 +24,10 @@
       "role": "student"
     },
     {
-      "classImg": "class3.jpg",
+      "classImg": "https://i.ibb.co/x8BBTT4/portrait.jpg",
       "numberOfStudents": 20,
       "instructorName": "David Lee",
-      "instructorImg": "instructor3.jpg",
+      "instructorImg": "https://i.ibb.co/zQ6x9Wd/teacher4.jpg",
       "className": "Portrait Drawing",
       "availableSeats": 0,
       "price": 1000,
@@ -35,10 +35,10 @@
       "status": "Closed"
     },
     {
-      "classImg": "class4.jpg",
+      "classImg": "https://i.ibb.co/gV8ZD6H/still-life-pic.jpg",
       "numberOfStudents": 8,
       "instructorName": "Emily Adams",
-      "instructorImg": "instructor4.jpg",
+      "instructorImg": "https://i.ibb.co/zQ6x9Wd/teacher4.jpg",
       "className": "Still Life Painting",
       "availableSeats": 2,
       "price": 900,
@@ -47,10 +47,10 @@
       "role": "student"
     },
     {
-      "classImg": "class5.jpg",
+      "classImg": "https://i.ibb.co/D1VB2DY/charcoal.jpg",
       "numberOfStudents": 18,
       "instructorName": "Michael Thompson",
-      "instructorImg": "instructor5.jpg",
+      "instructorImg": "https://i.ibb.co/GMCJqym/teacher2.jpg",
       "className": "Charcoal Sketching",
       "availableSeats": 3,
       "price": 600,
@@ -59,10 +59,10 @@
       "role": "student"
     },
     {
-      "classImg": "class6.jpg",
+      "classImg": "https://i.ibb.co/Sm9n10Q/landscape.jpg",
       "numberOfStudents": 10,
       "instructorName": "Jennifer Davis",
-      "instructorImg": "instructor6.jpg",
+      "instructorImg": "https://i.ibb.co/khHny3h/teacher3.jpg",
       "className": "Landscape Painting",
       "availableSeats": 5,
       "price": 800,
@@ -71,10 +71,10 @@
       "role": "student"
     },
     {
-      "classImg": "class7.jpg",
+      "classImg": "https://i.ibb.co/SJXcQXM/pen-ink.png",
       "numberOfStudents": 16,
       "instructorName": "Christopher Clark",
-      "instructorImg": "instructor7.jpg",
+      "instructorImg": "https://i.ibb.co/GMCJqym/teacher2.jpg",
       "className": "Pen and Ink Drawing",
       "availableSeats": 4,
       "price": 700,
@@ -83,10 +83,10 @@
       "role": "student"
     },
     {
-      "classImg": "class8.jpg",
+      "classImg": "https://i.ibb.co/hgTx1qq/figure.jpg",
       "numberOfStudents": 14,
       "instructorName": "Jessica Wilson",
-      "instructorImg": "instructor8.jpg",
+      "instructorImg": "https://i.ibb.co/khHny3h/teacher3.jpg",
       "className": "Figure Drawing",
       "availableSeats": 6,
       "price": 950,
@@ -95,10 +95,10 @@
       "role": "student"
     },
     {
-      "classImg": "class9.jpg",
+      "classImg": "https://i.ibb.co/7RxZ083/oil-painting.jpg",
       "numberOfStudents": 22,
       "instructorName": "Robert Baker",
-      "instructorImg": "instructor9.jpg",
+      "instructorImg": "https://i.ibb.co/khHny3h/teacher3.jpg",
       "className": "Oil Painting Basics",
       "availableSeats": 1,
       "price": 110,
@@ -107,10 +107,10 @@
       "role": "student"
     },
     {
-      "classImg": "class10.jpg",
+      "classImg": "https://i.ibb.co/W20pkT9/color-theory.png",
       "numberOfStudents": 13,
       "instructorName": "Amanda Turner",
-      "instructorImg": "instructor10.jpg",
+      "instructorImg": "https://i.ibb.co/GMCJqym/teacher2.jpg",
       "className": "Color Theory",
       "availableSeats": 7,
       "price": 550,
