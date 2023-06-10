@@ -13,7 +13,7 @@ import slide5 from '../../../../assets/images/strom.jpg';
 
 const Category = () => {
     return (
-        <section>
+        <section className="my-12">
             <Swiper
             slidesPerView={4}
             spaceBetween={30}
@@ -25,23 +25,23 @@ const Category = () => {
             className="mySwiper mb-24"
         >
             <SwiperSlide>
-                <img src={slide1} alt="" />
+                <img className="animate-pulse" src={slide1} alt="" />
                 <h3 className="text-4xl uppercase text-center -mt-16 text-white">Nature</h3>
                 </SwiperSlide>
             <SwiperSlide>
-                <img src={slide2} alt="" />
+                <img className="animate-pulse" src={slide2} alt="" />
                 <h3 className="text-4xl uppercase text-center -mt-16 text-white">River</h3>
                 </SwiperSlide>
             <SwiperSlide>
-                <img src={slide3} alt="" />
+                <img className="animate-pulse" src={slide3} alt="" />
                 <h3 className="text-4xl uppercase text-center -mt-16 text-white">Arts</h3>
                 </SwiperSlide>
             <SwiperSlide>
-                <img src={slide4} alt="" />
+                <img className="animate-pulse" src={slide4} alt="" />
                 <h3 className="text-4xl uppercase text-center -mt-16 text-white">School</h3>
                 </SwiperSlide>
             <SwiperSlide>
-                <img src={slide5} alt="" />
+                <img className="animate-pulse" src={slide5} alt="" />
                 <h3 className="text-4xl uppercase text-center -mt-16 text-white">Storm</h3>
                 </SwiperSlide>
         </Swiper>

@@ -2,7 +2,7 @@
 
 const PopularClasses = () => {
     return (
-        <div>
+        <div className="mb-12">
             <h2>Have a good class</h2>
         </div>
     );

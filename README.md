@@ -15,7 +15,6 @@
 - Context API used
  
 ## Packages
-- aos
 - react-toastify 
 - sweetalert2
 - firebase

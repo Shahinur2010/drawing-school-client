@@ -5,8 +5,8 @@
 
 
 const Dashboard = () => {
-//     const [cart] = uesCart();
-//  const [isAdmin] = useAdmin();
+    //     const [cart] = uesCart();
+    //  const [isAdmin] = useAdmin();
 
     return (
         // <div className="drawer drawer-mobile">
@@ -27,7 +27,7 @@ const Dashboard = () => {
         //                     <li><NavLink to="/dashboard/manageitems"><FaWallet /> Manage Items</NavLink></li>
         //                     <li><NavLink to="/"><FaBook /> Manage Bookings (TODO)</NavLink></li>
         //                     <li><NavLink to="/dashboard/allusers"><FaUsers /> All Users</NavLink></li>
-                            
+
         //                     <div className="divider"></div>
         //                     <li><NavLink to="/"><FaHome /> Home</NavLink></li>
         //                     <li><NavLink to="/menu"><FaHamburger /> Menu</NavLink></li>

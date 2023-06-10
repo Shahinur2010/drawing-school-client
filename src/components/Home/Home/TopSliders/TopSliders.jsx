@@ -1,11 +1,11 @@
-import img1 from '../../../../assets/images/scene.webp'
+import img1 from '../../../../assets/images/village.jpg'
 import img2 from '../../../../assets/images/colored.jpg'
-import img3 from '../../../../assets/images/village.jpg'
-import img4 from '../../../../assets/images/strom.jpg'
+import img3 from '../../../../assets/images/strom.jpg'
+import img4 from '../../../../assets/images/scene.webp'
 const TopSliders = () => {
     return (
-        <div className="">
-            <div className="carousel w-full">
+        <div className="w-full">
+            <div className="carousel">
                 <div id="slide1" className="carousel-item relative w-full">
                     <img src={img1} className="w-full" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
