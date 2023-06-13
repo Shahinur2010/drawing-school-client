@@ -1,28 +1,20 @@
 
 
 const SingleInstructor = ({ ins }) => {
-    const { classImg, availableSeats, className, instructorEmail, instructorImg, instructorName, numberOfStudents, price, role, status } = ins;
+    const { instructorEmail, instructorImg, instructorName } = ins;
     return (
-          <tr>
-            <td>
-                <div className="avatar">
-                    <div className="rounded w-24 h-24">
-                        {instructorImg && <img src={instructorImg} alt="" />}
-                    </div>
+<div className="mx-auto">
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <figure className="px-10 pt-10">
+                    <img src={instructorImg} alt="Shoes" className="rounded-xl" />
+                </figure>
+                <div className="card-body items-center text-center">
+                    <h2 className="card-title">{instructorName}</h2>
+                    <p>Email: {instructorEmail}</p>
                 </div>
-            </td>
-            <td>{instructorName}</td>
-            <td>{instructorEmail}</td>
-            <td>{numberOfStudents}</td>
-            <td>{availableSeats}</td>
-            <td>${price}</td>
-            {/* <td>{availableQuantity}</td>
-            <td>{rating}</td>
-            <th>
-                <Link onClick={handleToast} to={`/view-details/${_id}`}><button className="btn btn-primary btn-xs">View Details</button></Link>
-                <ToastContainer/>
-            </th> */}
-        </tr>
+            </div>
+        </div>
+
     );
 };
 

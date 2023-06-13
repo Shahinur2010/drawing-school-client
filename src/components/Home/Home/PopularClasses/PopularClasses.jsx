@@ -1,21 +1,23 @@
-import { useEffect, useState } from "react";
+
 import SingleClass from "../../../SingleClass/SingleClass";
+import usePopularInfo from "../../../../Hooks/usePopularinfo";
 
 
 const PopularClasses = () => {
-    const [classes, setClasses] = useState([]);
-    useEffect(()=> {
-        fetch('data.json')
-        .then(res=>res.json())
-        .then(data=>{
-            setClasses(data)
-        })
-    }, [])
+    const [popularData] = usePopularInfo();
+    // const [classes, setClasses] = useState([]);
+    // useEffect(()=> {
+    //     fetch('data.json')
+    //     .then(res=>res.json())
+    //     .then(data=>{
+    //         setClasses(data)
+    //     })
+    // }, [])
     return (
         <> <h2 className='text-center font-bold text-3xl my-6'>Popular Classes</h2>
         <div className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-4">
             {
-                classes.map((cls, i) => <SingleClass key={i} cls={cls}></SingleClass>)
+                popularData.map((cls, i) => <SingleClass key={i} cls={cls}></SingleClass>)
             }
         </div>
         </>
