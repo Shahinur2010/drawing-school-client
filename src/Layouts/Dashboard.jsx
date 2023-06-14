@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 import DayNightToggle from 'react-day-and-night-toggle'
-import { FaAmazonPay, FaChalkboardTeacher, FaHome, FaPeopleArrows, FaRestroom, FaSchool, FaUsers, FaWallet,  } from 'react-icons/fa';
+import { FaAmazonPay, FaChalkboardTeacher, FaHome, FaPeopleArrows, FaRestroom, FaSchool, FaUsers, FaWallet, FaAdn, FaShoppingCart } from 'react-icons/fa';
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from '../Hooks/useAdmin';
 import useInstructor from '../Hooks/useInstructor';
@@ -38,8 +38,8 @@ const Dashboard = () => {
                     <li><NavLink to='/classes'><FaPeopleArrows></FaPeopleArrows> Classes</NavLink></li></> :
                     isInstructor? <>
                     <li><NavLink to="/dashboard/instructorhome"><FaHome></FaHome> Instructor Home</NavLink></li>
-                    <li><NavLink to="/dashboard/addclass">Add Class</NavLink></li>
-                    <li><NavLink to="/dashboard/myclass">My Classes</NavLink></li>
+                    <li><NavLink to="/dashboard/addclass"><FaShoppingCart></FaShoppingCart> Add Class</NavLink></li>
+                    <li><NavLink to="/dashboard/myclass"><FaAdn></FaAdn> My Classes</NavLink></li>
                     <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
                     <li><NavLink to='/instructors'><FaChalkboardTeacher></FaChalkboardTeacher> Instructors</NavLink></li>
