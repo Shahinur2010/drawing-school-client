@@ -1,7 +1,7 @@
 
 
 const SingleInstructor = ({ ins }) => {
-    const { instructorEmail, instructorImg, instructorName } = ins;
+    const { email, instructorImg, instructorName } = ins;
     return (
 <div className="mx-auto">
             <div className="card w-96 bg-base-100 shadow-xl">
@@ -10,7 +10,7 @@ const SingleInstructor = ({ ins }) => {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{instructorName}</h2>
-                    <p>Email: {instructorEmail}</p>
+                    <p>Email: {email}</p>
                 </div>
             </div>
         </div>

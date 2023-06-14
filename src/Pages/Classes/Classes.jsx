@@ -5,13 +5,15 @@ const Classes = () => {
     const [items, setItems] = useState([]);
     
     useEffect(() => {
-        fetch('http://localhost:5000/datas')
+        fetch('http://localhost:5000/classes/approved')
         .then(res => res.json())
         .then(data=>{
             setItems(data)
         })
     }, [])
     return (
+        <>
+        <h2 className="text-center text-3xl font-bold my-6">Total Approved Classes: {items.length}</h2>
         <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -50,6 +52,7 @@ items.map(item=> <tr key={item._id}>
           </tbody>
         </table>
       </div>
+        </>
     );
 };
 

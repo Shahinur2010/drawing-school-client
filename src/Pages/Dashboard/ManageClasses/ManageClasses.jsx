@@ -2,19 +2,27 @@ import { useState } from "react";
 import useTitle from "../../../Hooks/useTitle";
 import { useEffect } from "react";
 import AllClasses from './AllClasses'
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/Authprovider";
 
 
 const ManageClasses = () => {
     const [loadedClasses, setLoadedClasses] = useState([]);
+    // const {user} = useContext(AuthContext)
     useTitle('Manage Classes')
+    const token = localStorage.getItem('access-token')
 
     useEffect(() => {
-        fetch('http://localhost:5000/allclass')
-            .then(res => res.json())
-            .then(data => {
-                setLoadedClasses(data)
-            })
-    }, [])
+        if(token){
+            fetch('http://localhost:5000/allclass', {headers: {
+                authorization: `bearer ${token}`
+            }})
+                .then(res => res.json())
+                .then(data => {
+                    setLoadedClasses(data)
+                })
+        }
+    }, [token])
 
     return (
         <div>

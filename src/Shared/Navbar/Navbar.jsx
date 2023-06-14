@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/Authprovider";
 import ActiveLink from "../ActiveLink/ActiveLink";
-// import useAdmin from "../../Hooks/useAdmin";
-// import useInstructor from "../../Hooks/useInstructor";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    // const [isAdmin] = useAdmin();
-    // const [isInstructor] = useInstructor();
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     const handleLogOut = () => {
         logOut()
@@ -20,10 +20,9 @@ const Navbar = () => {
         <li className="text-lg font-semibold"><ActiveLink to='/'>Home</ActiveLink></li>
         <li className="text-lg font-semibold"><ActiveLink to='/instructors'>Instructors</ActiveLink></li>
         <li className="text-lg font-semibold"><ActiveLink to='/classes'>Classes</ActiveLink></li>
-        {user && <li className="text-lg font-semibold"><ActiveLink to='/dashboard'>Dashboard</ActiveLink></li>}
 
-        {/* <li><ActiveLink to={isAdmin ? '/dashboard/adminhome': isInstructor ? '/dashboard/instructorhome' : '/dashboard/userhome'}>Dashboard</ActiveLink></li>
-         */}
+         {user && <li className="text-lg font-semibold"><ActiveLink to={isAdmin ? '/dashboard/adminhome': isInstructor ? '/dashboard/instructorhome' : '/dashboard/userhome'}>Dashboard</ActiveLink></li>}
+        
         <div className="mt-5">
             <div className="tooltip flex flex-col lg:flex-row gap-2 me-4" data-tip={user?.displayName}>
                 <button className="btn btn-info"><img className="w-10 rounded-full" src={user?.photoURL} /></button>

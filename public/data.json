@@ -7,7 +7,7 @@
       "className": "Introduction to Sketching",
       "availableSeats": 5,
       "price": 500,
-      "instructorEmail": "johnsmith@example.com",
+      "email": "johnsmith@example.com",
       "status": "pending",
       "role": "student"
     },
@@ -19,7 +19,7 @@
       "className": "Watercolor Techniques",
       "availableSeats": 8,
       "price": 750,
-      "instructorEmail": "sarahjohnson@example.com",
+      "email": "sarahjohnson@example.com",
       "status": "pending",
       "role": "student"
     },
@@ -31,7 +31,7 @@
       "className": "Portrait Drawing",
       "availableSeats": 0,
       "price": 1000,
-      "instructorEmail": "davidlee@example.com",
+      "email": "davidlee@example.com",
       "status": "Closed"
     },
     {
@@ -42,7 +42,7 @@
       "className": "Still Life Painting",
       "availableSeats": 2,
       "price": 900,
-      "instructorEmail": "emilyadams@example.com",
+      "email": "emilyadams@example.com",
       "status": "pending",
       "role": "student"
     },
@@ -54,7 +54,7 @@
       "className": "Charcoal Sketching",
       "availableSeats": 3,
       "price": 600,
-      "instructorEmail": "michaelthompson@example.com",
+      "email": "michaelthompson@example.com",
       "status": "pending",
       "role": "student"
     },
@@ -66,7 +66,7 @@
       "className": "Landscape Painting",
       "availableSeats": 5,
       "price": 800,
-      "instructorEmail": "jenniferdavis@example.com",
+      "email": "jenniferdavis@example.com",
       "status": "pending",
       "role": "student"
     },
@@ -78,7 +78,7 @@
       "className": "Pen and Ink Drawing",
       "availableSeats": 4,
       "price": 700,
-      "instructorEmail": "christopherclark@example.com",
+      "email": "christopherclark@example.com",
       "status": "pending",
       "role": "student"
     },
@@ -90,7 +90,7 @@
       "className": "Figure Drawing",
       "availableSeats": 6,
       "price": 950,
-      "instructorEmail": "jessicawilson@example.com",
+      "email": "jessicawilson@example.com",
       "status": "pending",
       "role": "student"
     },
@@ -102,7 +102,7 @@
       "className": "Oil Painting Basics",
       "availableSeats": 1,
       "price": 110,
-      "instructorEmail": "robertbaker@example.com",
+      "email": "robertbaker@example.com",
       "status": "pending",
       "role": "student"
     },
@@ -114,7 +114,7 @@
       "className": "Color Theory",
       "availableSeats": 7,
       "price": 550,
-      "instructorEmail": "amandaturner@example.com",
+      "email": "amandaturner@example.com",
       "status": "pending",
       "role": "student"
     }

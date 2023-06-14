@@ -1,6 +1,6 @@
 
 const SingleClass = ({ cls }) => {
-    const { classImg, availableSeats, className, instructorEmail, instructorImg, instructorName, numberOfStudents, price, role, status } = cls;
+    const { classImg, availableSeats, className, email, instructorImg, instructorName, numberOfStudents, price, role, status } = cls;
     return (
         <div className="mx-auto">
             <div className="card w-96 bg-base-100 shadow-xl">

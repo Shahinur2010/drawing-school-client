@@ -7,17 +7,22 @@ import { AuthContext } from "../../../Providers/Authprovider";
 
 const MyClasses = () => {
     const {user} = useContext(AuthContext);
+    const token = localStorage.getItem('access-token')
     const [loadedClasses, setLoadedClasses] = useState([]);
     useTitle('My Classes')
 
-    const url = `http://localhost:5000/allclass?instructorEmail=${user?.email}`;
+    const url = `http://localhost:5000/allclass?email=${user?.email}`;
     useEffect(() => {
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                setLoadedClasses(data)
-            })
-    }, [url])
+        if(user?.email && token){
+            fetch(url, {headers: {
+                authorization: `bearer ${token}`
+            }})
+                .then(res => res.json())
+                .then(data => {
+                    setLoadedClasses(data)
+                })
+        }
+    }, [token, url, user?.email])
 
     return (
         <div>
@@ -39,7 +44,7 @@ const MyClasses = () => {
                     </thead>
                     <tbody className='text-center'>
                         {
-                            loadedClasses.map(loadedClasses => <MyClassesRow key={loadedClasses._id} loadedClasses={loadedClasses}></MyClassesRow>)
+                            loadedClasses?.map(loadedClasses => <MyClassesRow key={loadedClasses._id} loadedClasses={loadedClasses}></MyClassesRow>)
                         }
                     </tbody>
                 </table>

@@ -17,8 +17,8 @@ const usePopularInfo = () => {
     return [popularData, loading]
 }
 
-//     const { data: menu = [], isLoading: loading, refetch } = useQuery({
-//         queryKey: ['menu'],
+//     const { refetch, data: classes = [] } = useQuery({
+//         queryKey: ['classes'],
 //         queryFn: async () => {
 //             const res = await fetch('https://bistro-boss-server-beryl.vercel.app/menu');
 //             return res.json();

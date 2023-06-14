@@ -16,17 +16,17 @@ const AddClass = () => {
                 const price = form.price.value;
                 const classImg = form.classImg.value;
                 const instructorName = form.instructorName.value;
-                const instructorEmail = form.instructorEmail.value;
+                const email = form.email.value;
                 const availableSeats = form.availableSeats.value;
                 const status = form.status.value;
-        
+               
         
                 const addClass = {
                     className,
                     price,
                     classImg,
                     instructorName,
-                    instructorEmail,
+                    email,
                     availableSeats,
                     status
                 }
@@ -42,6 +42,7 @@ const AddClass = () => {
                     .then(res => res.json())
                     .then(data => {
                         if (data.insertedId) {
+                            form.reset()
                             Swal.fire({
                                 title: 'Success!',
                                 text: 'Class Added Successfully!',
@@ -80,7 +81,7 @@ const AddClass = () => {
                                 <label className="label">
                                     <span className="label-text">Instructor Email</span>
                                 </label>
-                                <input type="email" defaultValue={user?.email} name='instructorEmail' required placeholder="" className="input input-bordered" />
+                                <input type="email" defaultValue={user?.email} name='email' required placeholder="" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -108,3 +109,4 @@ const AddClass = () => {
 };
 
 export default AddClass;
+

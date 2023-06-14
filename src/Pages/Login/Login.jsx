@@ -30,7 +30,7 @@ const Login = () => {
                         console.log(loggedUser);
                         updateUser(data?.name, data?.photoURL)
                         .then(()=>{
-                            const saveUser = {name: data?.name, email: data?.email}
+                            const saveUser = {name: data?.name, email: data?.email, photo: data?.photoURL}
                            fetch('http://localhost:5000/users',{
                             method: 'POST',
                             headers: {
