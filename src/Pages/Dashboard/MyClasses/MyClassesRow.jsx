@@ -28,10 +28,6 @@ const MyClassesRow = ({loadedClasses, i}) => {
                 status === 'denied' &&
                 <Link to="/feedback"><button className="btn btn-primary btn-xs">Feedback</button></Link>}</td>
             <td>{<button className="btn btn-primary btn-xs">Update</button>}</td>
-            {/* <th>
-                <Link onClick={handleToast} to=""><button className="btn btn-primary btn-xs">View Details</button></Link>
-                <ToastContainer/>
-            </th> */}
         </tr>
     );
 };

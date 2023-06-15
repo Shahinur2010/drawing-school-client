@@ -105,40 +105,6 @@ const AllClasses = ({ loadedClasses, i }) => {
                             </Link>
                             <ToastContainer /> </>
                     }
-
-                    {/* {status === "denied" && "approved" ? <button className="btn btn-primary btn-xs" disabled>
-                        Approved
-                    </button> : <button className="btn btn-primary btn-xs" disabled>
-                        Approved
-                    </button>
-                    }
-
-                    {
-                        status == "pending" ? <>  : ""
-                    } */}
-
-                    {/* {status === "pending" && (
-                        <>
-                            <button onClick={handleApprove} className="btn btn-primary btn-xs">
-                                Approve
-                            </button>
-                            <button onClick={handleDeny} className="btn btn-primary btn-xs">
-                                Deny
-                            </button>
-                            <Link
-                                to={`/feedback?email=${email}&instructorName=${instructorName}`}
-                            >
-                                <button
-                                    className="btn btn-primary btn-xs"
-                                    onClick={handleSendFeedback}
-                                >
-                                    Send Feedback
-                                </button>
-                            </Link>
-                            <ToastContainer />
-                        </>
-                    )} */}
-                    {/* )} */}
                 </td>
             </tr>
         </>
