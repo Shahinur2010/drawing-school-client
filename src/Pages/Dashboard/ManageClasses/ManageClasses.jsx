@@ -32,6 +32,7 @@ const ManageClasses = () => {
                     {/* head */}
                     <thead className='text-center'>
                         <tr>
+                            <th>#</th>
                             <th>Class Image</th>
                             <th>Class Name</th>
                             <th>Instructor Name</th>
@@ -44,7 +45,7 @@ const ManageClasses = () => {
                     </thead>
                     <tbody className='text-center'>
                         {
-                            loadedClasses.map(loadedClasses => <AllClasses key={loadedClasses._id} loadedClasses={loadedClasses}></AllClasses>)
+                            loadedClasses.map((loadedClasses, i) => <AllClasses key={loadedClasses._id} i={i} loadedClasses={loadedClasses}></AllClasses>)
                         }
                     </tbody>
                 </table>

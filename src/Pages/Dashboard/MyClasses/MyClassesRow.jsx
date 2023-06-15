@@ -4,17 +4,14 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../../Providers/Authprovider";
 
 
-const MyClassesRow = ({loadedClasses}) => {
+const MyClassesRow = ({loadedClasses, i}) => {
     const {user} = useContext(AuthContext);
     const {classImg, availableSeats, className, price, status } = loadedClasses;
    
-    const handleToast = () =>{
-        if(!user){
-            toast("You have to log in first to view details!")}
-    }
 
     return (
         <tr>
+             <td>{i+1}</td>
             <td>
                 {/* <div className="avatar"> */}
                     <div className="rounded w-24 h-24">

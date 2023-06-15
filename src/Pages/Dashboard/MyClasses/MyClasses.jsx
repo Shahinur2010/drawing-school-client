@@ -32,6 +32,7 @@ const MyClasses = () => {
                     {/* head */}
                     <thead className='text-center'>
                         <tr>
+                            <th>#</th>
                             <th>Class Image</th>
                             <th>Class Name</th>
                             <th>Status</th>
@@ -44,7 +45,7 @@ const MyClasses = () => {
                     </thead>
                     <tbody className='text-center'>
                         {
-                            loadedClasses?.map(loadedClasses => <MyClassesRow key={loadedClasses._id} loadedClasses={loadedClasses}></MyClassesRow>)
+                            loadedClasses?.map((loadedClasses, i) => <MyClassesRow key={loadedClasses._id} i={i} loadedClasses={loadedClasses}></MyClassesRow>)
                         }
                     </tbody>
                 </table>

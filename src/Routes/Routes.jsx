@@ -23,6 +23,7 @@ import Feedback from "../Pages/Dashboard/MyClasses/Feedback";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import InstructorHome from "../Pages/Dashboard/InstructorHome";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
+import PaymentHistory from "../Pages/Dashboard/Payment/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
     {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
             {
                 path: 'payment',
                 element: <Payment></Payment>
+            },
+            {
+                path: 'paymenthistory',
+                element: <PaymentHistory></PaymentHistory>
             },
             // instructor routes
             {

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const SelectedClasses = () => {
     const [loading, setLoading] = useState(true);
@@ -57,6 +58,7 @@ const SelectedClasses = () => {
                     {/* head */}
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Class Image</th>
                             <th>Class Name</th>
                             <th>Available Seats</th>
@@ -67,7 +69,8 @@ const SelectedClasses = () => {
                     </thead>
                     <tbody>
                         {
-                            classes.map(slClass => <tr key={slClass._id}>
+                            classes.map((slClass, i) => <tr key={slClass._id}>
+                              <td>{i + 1}</td>
                                 <td>
                                     <div className="rounded w-24 h-24">
                                         {slClass.classImg && <img src={slClass.classImg} alt="" />}
@@ -77,7 +80,7 @@ const SelectedClasses = () => {
                                 <td>{slClass.availableSeats}</td>
                                 <td>${slClass.price}</td>
                                 <td><button onClick={() => handleDelete(slClass)} className="btn btn-sm bg-red-300 text-white"><FaRegTrashAlt /></button></td>
-                                <td><button className="btn btn-info btn-sm">Pay</button></td>
+                                <td><Link to="/dashboard/payment"><button className="btn btn-info btn-sm">Pay</button></Link></td>
                             </tr>)
                         }
                     </tbody>

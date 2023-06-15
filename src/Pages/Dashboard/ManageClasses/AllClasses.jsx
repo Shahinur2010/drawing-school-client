@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
 
 
-const AllClasses = ({ loadedClasses }) => {
+const AllClasses = ({ loadedClasses, i }) => {
     const [status, setStatus] = useState(loadedClasses.status);;
 
 
@@ -64,6 +64,7 @@ const AllClasses = ({ loadedClasses }) => {
     return (
         <>
             <tr>
+            <td>{i+1}</td>
                 <td>
                     <div className="rounded w-24 h-24">
                         {classImg && <img src={classImg} alt="" />}
@@ -77,25 +78,20 @@ const AllClasses = ({ loadedClasses }) => {
                 <td>{status}</td>
                 <td>
                     {
-                        status === "approved" && "denied"? <button className="btn btn-primary btn-xs" disabled>
-                        Denied
-                    </button>: <button className="btn btn-primary btn-xs" disabled>
-                                Denied
-                            </button>
-                    }
-
-{
-                        status === "denied" && "approved"? <button className="btn btn-primary btn-xs" disabled>
+                        status === "approved" || status === "denied" ?
+                     <>
+                      <button className="btn btn-primary btn-xs" disabled>
+                            Denied
+                        </button>
+                        
+                        <button className="btn btn-primary btn-xs" disabled>
                         Approved
-                    </button>: <button className="btn btn-primary btn-xs" disabled>
-                                Approved
-                            </button>
-                    }
-
-{
-                        status == "pending" ? <> <button onClick={handleApprove} className="btn btn-primary btn-xs">
-                        Approved
-                    </button> <button onClick={handleDeny} className="btn btn-primary btn-xs">
+                    </button>
+                     </>
+                        : <>
+                        <button onClick={handleApprove} className="btn btn-primary btn-xs">
+                            Approved
+                        </button> <button onClick={handleDeny} className="btn btn-primary btn-xs">
                                 Denied
                             </button> <Link
                                 to={`/feedback?email=${email}&instructorName=${instructorName}`}
@@ -107,8 +103,19 @@ const AllClasses = ({ loadedClasses }) => {
                                     Send Feedback
                                 </button>
                             </Link>
-                            <ToastContainer /> </>: ""
-}
+                            <ToastContainer /> </>
+                    }
+
+                    {/* {status === "denied" && "approved" ? <button className="btn btn-primary btn-xs" disabled>
+                        Approved
+                    </button> : <button className="btn btn-primary btn-xs" disabled>
+                        Approved
+                    </button>
+                    }
+
+                    {
+                        status == "pending" ? <>  : ""
+                    } */}
 
                     {/* {status === "pending" && (
                         <>

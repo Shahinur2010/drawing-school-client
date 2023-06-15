@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-// import useClasses from "../../Hooks/useClasses";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/Authprovider";
+import { toast } from "react-toastify";
+import useAdmin from "../../Hooks/useAdmin";
+import useInstructor from "../../Hooks/useInstructor";
 
 
 const Classes = () => {
   const [items, setItems] = useState([]);
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -18,6 +22,9 @@ const Classes = () => {
   }, [])
 
   const handleSelect = (item) => {
+    if(!user || isAdmin || isInstructor){
+              toast("An student have to log in first to select the class!")}
+              else{
 
     const selectedClass = { className: item?.className, classImg: item?.classImg, availableSeats: item?.availableSeats, price: item?.price, email: user?.email }
 
@@ -40,6 +47,7 @@ const Classes = () => {
           })
         }
       })
+    }
   }
 
 
@@ -51,6 +59,7 @@ const Classes = () => {
           {/* head */}
           <thead>
             <tr>
+              <th>#</th>
               <th>Picture</th>
               <th>Class Name</th>
               <th>Instructor</th>
@@ -61,7 +70,8 @@ const Classes = () => {
           </thead>
           <tbody>
             {
-              items.map(item => <tr key={item._id}>
+              items.map((item, i) => <tr key={item._id}>
+                <td>{i+1}</td>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">

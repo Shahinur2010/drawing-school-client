@@ -12,20 +12,21 @@ const Instructors = () => {
       })
   }, [])
   return (
-    <div className="overflow-x-auto mx-32">
+    <div className="overflow-x-auto mx-64">
       <table className="table">
         {/* head */}
         <thead>
           <tr>
+            <th>#</th>
             <th>Picture</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {
-            items.map(item => <tr key={item._id}>
+            items.map((item, i) => <tr key={item._id}>
+              <td>{i+1}</td>
               <td>
                 <div className="flex items-center space-x-3">
                   <div className="avatar">
@@ -37,9 +38,6 @@ const Instructors = () => {
               </td>
               <td>{item?.name}</td>
               <td>{item?.email}</td>
-              <td>
-                  <Link to="/addclass"><button className="btn btn-info btn-xs">Add Class</button></Link>
-              </td>
             </tr>)
           }
         </tbody>
