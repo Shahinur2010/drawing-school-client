@@ -1,8 +1,88 @@
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const SelectedClasses = () => {
+    const [loading, setLoading] = useState(true);
+    const [classes, setClasses] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/selectedclass')
+            .then(res => res.json())
+            .then(data => {
+                setClasses(data);
+                setLoading(false);
+            })
+            .catch(error => {
+                console.error(error);
+                setLoading(false);
+            });
+    }, []);
+
+    const handleDelete = (slClass) => {
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetch(`http://localhost:5000/selectedclass/${slClass._id}`, {
+              method: "DELETE"
+            })
+            .then(res => res.json())
+            .then(data => {
+              if (data.deletedCount > 0) {
+                setClasses(prevClasses => prevClasses.filter(item => item._id !== slClass._id));
+                Swal.fire(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                )
+              }
+            })
+          }
+        })
+      }
+      
+
     return (
         <div>
-            <h2>Students choose this class</h2>
+            <h2 className="text-center text-3xl font-bold my-6">Selected Classes: {loading ? 'Loading...' : classes.length}</h2>
+            <div className="overflow-x-auto">
+                <table className="table">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>Class Image</th>
+                            <th>Class Name</th>
+                            <th>Available Seats</th>
+                            <th>Price</th>
+                            <th>Delete</th>
+                            <th>Pay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            classes.map(slClass => <tr key={slClass._id}>
+                                <td>
+                                    <div className="rounded w-24 h-24">
+                                        {slClass.classImg && <img src={slClass.classImg} alt="" />}
+                                    </div>
+                                </td>
+                                <td>{slClass.className}</td>
+                                <td>{slClass.availableSeats}</td>
+                                <td>${slClass.price}</td>
+                                <td><button onClick={() => handleDelete(slClass)} className="btn btn-sm bg-red-300 text-white"><FaRegTrashAlt /></button></td>
+                                <td><button className="btn btn-info btn-sm">Pay</button></td>
+                            </tr>)
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

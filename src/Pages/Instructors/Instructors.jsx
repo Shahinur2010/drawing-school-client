@@ -12,7 +12,7 @@ const Instructors = () => {
       })
   }, [])
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto mx-32">
       <table className="table">
         {/* head */}
         <thead>
