@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/Authprovider';
+import Swal from 'sweetalert2';
 
 const SocialLogin = () => {
     const { signInWithGoogle } = useContext(AuthContext);
@@ -10,14 +11,13 @@ const SocialLogin = () => {
 
     const from = location.state?.from?.pathname || "/";
 
-
     const handleGoogleLogin = () => {
         signInWithGoogle()
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 const saveUser = { name: user?.displayName, email: user?.email, photo: user?.photoURL }
-                fetch('http://localhost:5000/users', {
+                fetch('https://assignment-12-server-five-murex.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -26,8 +26,15 @@ const SocialLogin = () => {
                 })
                     .then(res => res.json())
                     .then(() => {
-                            navigate(from, { replace: true });
-                        }
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User loggedIn successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate(from, { replace: true });
+                    }
                     )
             })
     }

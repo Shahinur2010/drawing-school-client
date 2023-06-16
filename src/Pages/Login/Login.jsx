@@ -13,7 +13,6 @@ const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [showPassword, setShowPassword] = useState(false);
 
-    
     const navigate = useNavigate();
     const location = useLocation()
     const from = location.state?.from?.pathname || "/";
@@ -21,51 +20,51 @@ const Login = () => {
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
-      };
+    };
 
-                const onSubmit = data => {
-                    signIn(data?.email, data?.password)
-                    .then(result => {
-                        const loggedUser = result.user;
-                        console.log(loggedUser);
-                        updateUser(data?.name, data?.photoURL)
-                        .then(()=>{
-                            const saveUser = {name: data?.name, email: data?.email, photo: data?.photoURL}
-                           fetch('http://localhost:5000/users',{
+    const onSubmit = data => {
+        signIn(data?.email, data?.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                updateUser(data?.name, data?.photoURL)
+                    .then(() => {
+                        const saveUser = { name: data?.name, email: data?.email, photo: data?.photoURL }
+                        fetch('https://assignment-12-server-five-murex.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 "content-type": "application/json"
                             },
                             body: JSON.stringify(saveUser)
-                           })
-                           .then(res=> res.json())
-                           .then(data=>{
-                            if(data.insertedId > 0){
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'User created successfully',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                  })
-                                  navigate(from, { replace: true })
-                            }
-                           })
-                reset();
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'User loggedIn successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-                navigate(from, { replace: true })
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId > 0) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    navigate(from, { replace: true })
+                                }
+                            })
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'User loggedIn successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        navigate(from, { replace: true })
+                    })
+                    .catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
-          })
     }
 
-    
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex flex-col">
@@ -78,7 +77,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" required/>
+                            <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" required />
                             {errors.email && <span className="text-red-400">Email is required</span>}
                         </div>
                         <div className="form-control">
@@ -88,7 +87,7 @@ const Login = () => {
                             <input type={showPassword ? 'text' : 'password'} {...register("password", {
                                 required: true
                             })} name="password" placeholder="password" className="input input-bordered" required />
-                        </div> 
+                        </div>
                         <div className="form-control mt-6">
                             <input className="btn btn-info btn-block" type="submit" value="Login" />
                         </div>

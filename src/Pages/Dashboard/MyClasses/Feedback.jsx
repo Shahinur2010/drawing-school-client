@@ -1,6 +1,8 @@
+import useTitle from "../../../Hooks/useTitle";
 
 
 const Feedback = () => {
+    useTitle('Feedback')
     return (
         <div>
             <h2 className="text-center text-3xl font-semibold my-5">Please Give Your Valuable Feedback</h2>
@@ -9,7 +11,7 @@ const Feedback = () => {
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                 <form method="dialog" className="modal-box">
                     <h3 className="font-bold text-lg">Hello!</h3>
-                   <textarea name="" id="" cols="30" rows="10"></textarea>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
                     <div className="modal-action">
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn">Close</button>

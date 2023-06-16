@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-
+import useTitle from "../../Hooks/useTitle";
 
 const Instructors = () => {
   const [items, setItems] = useState([]);
+  useTitle('Instructors')
+
   useEffect(() => {
-    fetch('http://localhost:5000/users/instructor')
+    fetch('https://assignment-12-server-five-murex.vercel.app/users/instructor')
       .then(res => res.json())
       .then(data => {
         setItems(data)
@@ -26,7 +27,7 @@ const Instructors = () => {
         <tbody>
           {
             items.map((item, i) => <tr key={item._id}>
-              <td>{i+1}</td>
+              <td>{i + 1}</td>
               <td>
                 <div className="flex items-center space-x-3">
                   <div className="avatar">

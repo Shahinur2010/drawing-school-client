@@ -6,11 +6,11 @@ import { useQuery } from "@tanstack/react-query";
 
 const useInstructor = () => {
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [axiosSecure] = useAxiosSecure();
-    const {data: isInstructor, isLoading: isInstructorLoading} = useQuery({
+    const { data: isInstructor, isLoading: isInstructorLoading } = useQuery({
         queryKey: ['isInstructor', user?.email],
-        enabled:!!user?.email && !!localStorage.getItem("access-token"),
+        enabled: !!user?.email && !!localStorage.getItem("access-token"),
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/instructor/${user?.email}`);
             return res.data.instructor;

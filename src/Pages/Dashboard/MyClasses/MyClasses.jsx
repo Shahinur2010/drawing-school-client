@@ -4,19 +4,20 @@ import { useEffect } from "react";
 import MyClassesRow from './MyClassesRow'
 import { AuthContext } from "../../../Providers/Authprovider";
 
-
 const MyClasses = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const token = localStorage.getItem('access-token')
     const [loadedClasses, setLoadedClasses] = useState([]);
     useTitle('My Classes')
 
-    const url = `http://localhost:5000/allclass?email=${user?.email}`;
+    const url = `https://assignment-12-server-five-murex.vercel.app/allclass?email=${user?.email}`;
     useEffect(() => {
-        if(user?.email && token){
-            fetch(url, {headers: {
-                authorization: `bearer ${token}`
-            }})
+        if (user?.email && token) {
+            fetch(url, {
+                headers: {
+                    authorization: `bearer ${token}`
+                }
+            })
                 .then(res => res.json())
                 .then(data => {
                     setLoadedClasses(data)
@@ -26,8 +27,8 @@ const MyClasses = () => {
 
     return (
         <div>
-             <h2 className='text-center font-bold text-3xl my-4'>My Classes: {loadedClasses.length}</h2>
-             <div className="overflow-x-auto w-full">
+            <h2 className='text-center font-bold text-3xl my-4'>My Classes: {loadedClasses.length}</h2>
+            <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     {/* head */}
                     <thead className='text-center'>

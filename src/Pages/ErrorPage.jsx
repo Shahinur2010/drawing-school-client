@@ -7,7 +7,7 @@ const ErrorElement = () => {
   const error = useRouteError();
   const navigate = useNavigate();
   console.error(error);
-  useTitle('ErrorElement')
+  useTitle('ErrorPage')
 
   const handleGoBack = () => {
     navigate('/');

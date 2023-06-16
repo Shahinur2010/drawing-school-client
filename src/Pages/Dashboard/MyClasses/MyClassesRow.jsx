@@ -1,23 +1,15 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
-import { AuthContext } from "../../../Providers/Authprovider";
 
-
-const MyClassesRow = ({loadedClasses, i}) => {
-    const {user} = useContext(AuthContext);
-    const {classImg, availableSeats, className, price, status } = loadedClasses;
-   
+const MyClassesRow = ({ loadedClasses, i }) => {
+    const { classImg, availableSeats, className, price, status } = loadedClasses;
 
     return (
         <tr>
-             <td>{i+1}</td>
+            <td>{i + 1}</td>
             <td>
-                {/* <div className="avatar"> */}
-                    <div className="rounded w-24 h-24">
-                        {classImg && <img src={classImg} alt="" />}
-                    </div>
-                {/* </div> */}
+                <div className="rounded w-24 h-24">
+                    {classImg && <img src={classImg} alt="" />}
+                </div>
             </td>
             <td>{className}</td>
             <td>{status}</td>

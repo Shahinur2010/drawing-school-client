@@ -6,28 +6,27 @@ import { AuthContext } from "../Providers/Authprovider";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000/',
+    baseURL: 'https://assignment-12-server-five-murex.vercel.app/',
 });
 
-const useAxiosSecure = () =>{
-    const {logOut} = useContext(AuthContext);
+const useAxiosSecure = () => {
+    const { logOut } = useContext(AuthContext);
     const navigate = useNavigate();
 
-
-    useEffect(()=>{
+    useEffect(() => {
         axiosSecure.interceptors.request.use((config) => {
             const token = localStorage.getItem('access-token');
-            if(token){
+            if (token) {
                 config.headers.Authorization = `Bearer ${token}`;
             }
             return config;
         });
 
         axiosSecure.interceptors.response.use(
-            (response) => response, 
+            (response) => response,
             async (error) => {
-                if(error.response && (error.response.status === 401 || error.response.status === 403)){
-                    await(logOut);
+                if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+                    await (logOut);
                     navigate('/login');
                 }
                 return Promise.reject(error);

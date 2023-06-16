@@ -3,42 +3,44 @@
 import { FaUserShield } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import { useQuery } from "@tanstack/react-query";
+import useTitle from "../../../Hooks/useTitle";
 
 
 const ManageUsers = () => {
+    useTitle('Manage Users')
 
-const {data: users = [], refetch} = useQuery(['users'], async () => {
-    const res = await fetch('http://localhost:5000/users')
-    return res.json();
-})
+    const { data: users = [], refetch } = useQuery(['users'], async () => {
+        const res = await fetch('https://assignment-12-server-five-murex.vercel.app/users')
+        return res.json();
+    })
 
-const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
-        method: 'PATCH'
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data)
-        if(data.modifiedCount){
-            refetch();
-            toast(`${user.name} is an Admin Now!`)
-        }
-    })
-}
+    const handleMakeAdmin = (user) => {
+        fetch(`https://assignment-12-server-five-murex.vercel.app/users/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    toast(`${user.name} is an Admin Now!`)
+                }
+            })
+    }
 
-const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-        method: 'PATCH'
-    })
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data)
-        if(data.modifiedCount){
-            refetch();
-            toast(`${user.name} is an Instructor Now!`)
-        }
-    })
-}
+    const handleMakeInstructor = (user) => {
+        fetch(`https://assignment-12-server-five-murex.vercel.app/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    refetch();
+                    toast(`${user.name} is an Instructor Now!`)
+                }
+            })
+    }
 
 
     return (
@@ -63,11 +65,11 @@ const handleMakeInstructor = (user) => {
                                 <th>{i + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{user.role === 'admin'? 'admin' : user.role=== 'instructor'?'instructor': <FaUserShield></FaUserShield>
+                                <td>{user.role === 'admin' ? 'admin' : user.role === 'instructor' ? 'instructor' : <FaUserShield></FaUserShield>
                                 }</td>
                                 <td>
-                                    <button onClick={()=>handleMakeInstructor(user)} className="btn btn-info btn-xs">Make Instructor</button>
-                                    <button onClick={()=>handleMakeAdmin(user)} className="btn btn-info btn-xs">Make Admin</button>
+                                    <button onClick={() => handleMakeInstructor(user)} className="btn btn-info btn-xs">Make Instructor</button>
+                                    <button onClick={() => handleMakeAdmin(user)} className="btn btn-info btn-xs">Make Admin</button>
                                 </td>
                             </tr>)
                         }

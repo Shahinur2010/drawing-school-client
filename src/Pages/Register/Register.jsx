@@ -4,11 +4,13 @@ import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/Authprovider";
 import SocialLogin from "../../SocialLogin/SocialLogin";
+import useTitle from "../../Hooks/useTitle";
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const navigate = useNavigate();
+    useTitle('Register')
     const [confirmPasswordTouched, setConfirmPasswordTouched] = useState(false);
 
     const onSubmit = data => {
@@ -28,7 +30,7 @@ const Register = () => {
                 updateUser(data?.name, data?.photoURL)
                     .then(() => {
                         const saveUser = { name: data?.name, email: data?.email, photo: data?.photoURL };
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://assignment-12-server-five-murex.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 "content-type": "application/json"

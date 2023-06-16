@@ -9,7 +9,7 @@ const Main = () => {
         <div className='mx-auto'>
             <Navbar></Navbar>
             <Outlet></Outlet>
-            <ToastContainer/>
+            <ToastContainer />
             <Footer></Footer>
         </div>
     );

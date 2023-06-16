@@ -5,16 +5,15 @@ const useClass = () => {
     const { data: slClass = [], refetch } = useQuery({
         queryKey: ['slClass'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/selectedclass');
+            const res = await fetch('https://assignment-12-server-five-murex.vercel.app/selectedclass');
             return res.json();
         }
     });
 
-    return [ slClass, refetch]
+    return [slClass, refetch]
 }
-    
+
 export default useClass;
 
 
 
-    

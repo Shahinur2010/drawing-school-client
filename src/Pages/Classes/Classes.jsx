@@ -5,6 +5,7 @@ import { AuthContext } from "../../Providers/Authprovider";
 import { toast } from "react-toastify";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
+import useTitle from "../../Hooks/useTitle";
 
 
 const Classes = () => {
@@ -12,9 +13,10 @@ const Classes = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   const { user } = useContext(AuthContext);
+  useTitle('Classes')
 
   useEffect(() => {
-    fetch('http://localhost:5000/classes/approved')
+    fetch('https://assignment-12-server-five-murex.vercel.app/classes/approved')
       .then(res => res.json())
       .then(data => {
         setItems(data)
@@ -22,31 +24,32 @@ const Classes = () => {
   }, [])
 
   const handleSelect = (item) => {
-    if(!user || isAdmin || isInstructor){
-              toast("An student have to log in first to select the class!")}
-              else{
+    if (!user || isAdmin || isInstructor) {
+      toast("An student have to log in first to select the class!")
+    }
+    else {
 
-    const selectedClass = { className: item?.className, classImg: item?.classImg, availableSeats: item?.availableSeats, price: item?.price, email: user?.email }
+      const selectedClass = { className: item?.className, classImg: item?.classImg, availableSeats: item?.availableSeats, price: item?.price, email: user?.email }
 
-    fetch('http://localhost:5000/selectedclass', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(selectedClass)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.insertedId) {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Class has been added',
-            showConfirmButton: false,
-            timer: 1500
-          })
-        }
+      fetch('https://assignment-12-server-five-murex.vercel.app/selectedclass', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(selectedClass)
       })
+        .then(res => res.json())
+        .then(data => {
+          if (data.insertedId) {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Class has been added',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+        })
     }
   }
 
@@ -71,7 +74,7 @@ const Classes = () => {
           <tbody>
             {
               items.map((item, i) => <tr key={item._id}>
-                <td>{i+1}</td>
+                <td>{i + 1}</td>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">

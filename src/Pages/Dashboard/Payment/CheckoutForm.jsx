@@ -4,10 +4,9 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/Authprovider";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-// import './CheckoutForm/CheckoutForm.css'
 
 
-const CheckoutForm = ({ cart, price  }) => {
+const CheckoutForm = ({ price }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useContext(AuthContext);
@@ -18,22 +17,19 @@ const CheckoutForm = ({ cart, price  }) => {
   const [transactionId, setTransactionId] = useState('');
 
   useEffect(() => {
-   if(price > 0){
-    axiosSecure.post('/create-payment-intent', { price })
-    .then(res => {
-      console.log(res.data.clientSecret)
-      setClientSecret(res.data.clientSecret)
-    })
-   }
+    if (price > 0) {
+      axiosSecure.post('/create-payment-intent', { price })
+        .then(res => {
+          console.log(res.data.clientSecret)
+          setClientSecret(res.data.clientSecret)
+        })
+    }
   }, [price, axiosSecure])
 
   const handleSubmit = async (event) => {
-    // Block native form submission.
     event.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
       return;
     }
 
@@ -53,7 +49,6 @@ const CheckoutForm = ({ cart, price  }) => {
       setCardError(error.message);
     } else {
       setCardError('');
-      // console.log('PaymentMethod', paymentMethod);
     }
 
     setProcessing(true)
@@ -82,19 +77,12 @@ const CheckoutForm = ({ cart, price  }) => {
         transactionId: paymentIntent.id,
         price,
         date: new Date(),
-        quantity: cart.length,
-        cartItems: cart.map(item => item._id),
-        menuItems: cart.map(item => item.menuItemId),
         status: 'service pending',
-        itemNames: cart.map(item => item.name) 
       }
       axiosSecure.post('/payments', payment)
-      .then(res => {
-        console.log(res.data);
-        if(res.data.result.insertedId){
-          // display confirm
-        }
-      })
+        .then(res => {
+          console.log(res.data);
+        })
     }
   }
 

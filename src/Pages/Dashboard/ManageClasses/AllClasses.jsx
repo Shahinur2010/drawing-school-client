@@ -5,20 +5,20 @@ import { useQuery } from "@tanstack/react-query";
 
 
 const AllClasses = ({ loadedClasses, i }) => {
-    const [status, setStatus] = useState(loadedClasses.status);;
+    const [status, setStatus] = useState(loadedClasses.status);
 
 
+    // eslint-disable-next-line no-unused-vars
     const { data: classes = [], refetch } = useQuery(["classes"], async () => {
-        const res = await fetch("http://localhost:5000/classes");
+        const res = await fetch("https://assignment-12-server-five-murex.vercel.app/classes");
         return res.json();
     }
     );
 
-    // const {user} = useContext(AuthContext);
-    const { classImg, availableSeats, className, email, instructorImg, instructorName, numberOfStudents, price, role } = loadedClasses;
+    const { classImg, availableSeats, className, email, instructorName, price, } = loadedClasses;
 
     const handleApprove = () => {
-        fetch(`http://localhost:5000/classes/approved/${loadedClasses._id}`, {
+        fetch(`https://assignment-12-server-five-murex.vercel.app/classes/approved/${loadedClasses._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -31,14 +31,13 @@ const AllClasses = ({ loadedClasses, i }) => {
                     refetch();
                     toast("This class is approved now!");
                     setStatus("approved");
-                    // setIsButtonsDisabled(true);
                 }
             });
     };
 
 
     const handleDeny = () => {
-        fetch(`http://localhost:5000/classes/denied/${loadedClasses._id}`, {
+        fetch(`https://assignment-12-server-five-murex.vercel.app/classes/denied/${loadedClasses._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -52,7 +51,6 @@ const AllClasses = ({ loadedClasses, i }) => {
                     refetch();
                     toast("This class is denied now!");
                     setStatus("denied");
-                    // setIsButtonsDisabled(true);
                 }
             });
     };
@@ -64,7 +62,7 @@ const AllClasses = ({ loadedClasses, i }) => {
     return (
         <>
             <tr>
-            <td>{i+1}</td>
+                <td>{i + 1}</td>
                 <td>
                     <div className="rounded w-24 h-24">
                         {classImg && <img src={classImg} alt="" />}
@@ -79,31 +77,32 @@ const AllClasses = ({ loadedClasses, i }) => {
                 <td>
                     {
                         status === "approved" || status === "denied" ?
-                     <>
-                      <button className="btn btn-primary btn-xs" disabled>
-                            Denied
-                        </button>
-                        
-                        <button className="btn btn-primary btn-xs" disabled>
-                        Approved
-                    </button>
-                     </>
-                        : <>
-                        <button onClick={handleApprove} className="btn btn-primary btn-xs">
-                            Approved
-                        </button> <button onClick={handleDeny} className="btn btn-primary btn-xs">
-                                Denied
-                            </button> <Link
-                                to={`/feedback?email=${email}&instructorName=${instructorName}`}
-                            >
-                                <button
-                                    className="btn btn-primary btn-xs"
-                                    onClick={handleSendFeedback}
-                                >
-                                    Send Feedback
+                            <>
+                                <button className="btn btn-primary btn-xs" disabled>
+                                    Denied
                                 </button>
-                            </Link>
-                            <ToastContainer /> </>
+
+                                <button className="btn btn-primary btn-xs" disabled>
+                                    Approved
+                                </button>
+                            </>
+                            : <>
+                                <button onClick={handleApprove} className="btn btn-primary btn-xs">
+                                    Approved
+                                </button> <button onClick={handleDeny} className="btn btn-primary btn-xs">
+                                    Denied
+                                </button> <Link
+                                    to={`/feedback?email=${email}&instructorName=${instructorName}`}
+                                >
+                                    <button
+                                        className="btn btn-primary btn-xs"
+                                        onClick={handleSendFeedback}
+                                    >
+                                        Send Feedback
+                                    </button>
+                                </Link>
+                                <ToastContainer />
+                            </>
                     }
                 </td>
             </tr>
