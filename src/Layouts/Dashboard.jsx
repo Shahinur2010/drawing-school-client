@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 import DayNightToggle from 'react-day-and-night-toggle'
-import { FaAmazonPay, FaChalkboardTeacher, FaHome, FaPeopleArrows, FaRestroom, FaSchool, FaUsers, FaWallet, FaAdn, FaShoppingCart, FaGoogleWallet } from 'react-icons/fa';
+import { FaAmazonPay, FaChalkboardTeacher, FaHome, FaPeopleArrows, FaRestroom, FaSchool, FaUsers, FaWallet, FaAdn, FaShoppingCart } from 'react-icons/fa';
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from '../Hooks/useAdmin';
 import useInstructor from '../Hooks/useInstructor';
@@ -49,8 +49,8 @@ const Dashboard = () => {
                     <li><NavLink to="/dashboard/userhome"><FaHome></FaHome> User home</NavLink></li>
                     <li><NavLink to="/dashboard/selectedclass"><FaSchool></FaSchool> Selected Classes</NavLink></li>
                     <li><NavLink to="/dashboard/enrolledclass"><FaAmazonPay></FaAmazonPay> Enrolled Classes</NavLink></li>
-                    <li><NavLink to="/dashboard/payment"><FaWallet></FaWallet> Payment</NavLink></li>
-                    <li><NavLink to="/dashboard/paymenthistory"><FaGoogleWallet></FaGoogleWallet> Payment History</NavLink></li>
+                    {/* <li><NavLink to="/dashboard/payment"><FaWallet></FaWallet> Payment</NavLink></li> */}
+                    <li><NavLink to="/dashboard/paymenthistory"><FaWallet></FaWallet> Payment History</NavLink></li>
                     <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome> Home</NavLink></li>
                     <li><NavLink to='/instructors'><FaChalkboardTeacher></FaChalkboardTeacher> Instructors</NavLink></li>
