@@ -81,7 +81,7 @@ const SelectedClasses = () => {
                 <td>{slClass.availableSeats}</td>
                 <td>${slClass.price}</td>
                 <td><button onClick={() => handleDelete(slClass)} className="btn btn-sm bg-red-300 text-white"><FaRegTrashAlt /></button></td>
-                <td><Link to="/dashboard/payment"><button
+                <td><Link to={`/dashboard/payment/${slClass._id}`}><button
                   className="btn btn-info btn-sm"
                 >
                   Pay

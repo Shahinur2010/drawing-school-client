@@ -17,6 +17,7 @@ const CheckoutForm = ({ price }) => {
   const [transactionId, setTransactionId] = useState('');
 
   useEffect(() => {
+    console.log({price})
     if (price > 0) {
       axiosSecure.post('/create-payment-intent', { price })
         .then(res => {
